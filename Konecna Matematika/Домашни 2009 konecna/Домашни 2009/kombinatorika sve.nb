@@ -1,0 +1,241 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      6775,        176]*)
+(*NotebookOutlinePosition[      7419,        198]*)
+(*  CellTagsIndexPosition[      7375,        194]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[
+    \( (*Da\ se\ napravat\ moduli\ za\ naoganje\ na\ permutacii\ bez\ \
+povtoruvanje\ so\ povtoruvanje, \ 
+      varijacii\ bez\ i\ so\ povtoruvanje\ i\[IndentingNewLine]kombinacii\ \
+bez\ i\ so\ povtorivanje*) \)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*permutacii\ bez\ povtoruvanje*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\(Clear[a, t]\[IndentingNewLine]
+    permutaciibez[a_] := 
+      Module[{t}, t = Permutations[a]; t]\[IndentingNewLine]
+    permutaciibez[{a, b, c}]\)\)\)], "Input"],
+
+Cell[BoxData[
+    \({{a, b, c}, {a, c, b}, {b, a, c}, {b, c, a}, {c, a, b}, {c, b, 
+        a}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*permutacii\ so\ povtoruvanje*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\(\(Clear[a, k, t, i, j]\)\(\[IndentingNewLine]\)
+    \(permutaciiso[a_, k_] := 
+      Module[{t}, t = {}; 
+        For[i = 1, i \[LessEqual] Length[k], \(i++\), 
+          For[j = 1, j \[LessEqual] k[\([i]\)], \(j++\), 
+            t = Append[t, 
+                a[\([i]\)]\ ]\ \ ]\ ]\ ; \[IndentingNewLine]Print["\<t\>", 
+          Permutations[t]];\[IndentingNewLine]]\)\(\[IndentingNewLine]\)
+    \(permutaciiso[{a, b, c}, {2, 1, 2}]\)\(\ \)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \({{a, a, b, c, c}, {a, a, c, b, c}, {a, a, c, c, b}, {a, b, a, c, 
+        c}, {a, b, c, a, c}, {a, b, c, c, a}, {a, c, a, b, c}, {a, c, a, c, 
+        b}, {a, c, b, a, c}, {a, c, b, c, a}, {a, c, c, a, b}, {a, c, c, b, 
+        a}, {b, a, a, c, c}, {b, a, c, a, c}, {b, a, c, c, a}, {b, c, a, a, 
+        c}, {b, c, a, c, a}, {b, c, c, a, a}, {c, a, a, b, c}, {c, a, a, c, 
+        b}, {c, a, b, a, c}, {c, a, b, c, a}, {c, a, c, a, b}, {c, a, c, b, 
+        a}, {c, b, a, a, c}, {c, b, a, c, a}, {c, b, c, a, a}, {c, c, a, a, 
+        b}, {c, c, a, b, a}, {c, c, b, a, a}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*variacii\ bez\ povtoruvanje*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\(<< DiscreteMath`Combinatorica`\[IndentingNewLine]
+    Clear[a, t, k, p, i]\[IndentingNewLine]
+    variaciibez[a_, k_] := 
+      Module[{t}, t = {}; p = KSubsets[a, k]; 
+        For[i = 1, i \[LessEqual] Length[p], \(i++\), 
+          l = Permutations[p[\([i]\)]]; t = Union[t, l]]; 
+        t]\[IndentingNewLine]
+    variaciibez[{a, b, c, d}, 3]\)\)\)], "Input"],
+
+Cell[BoxData[
+    \({{a, b, c}, {a, b, d}, {a, c, b}, {a, c, d}, {a, d, b}, {a, d, c}, {b, 
+        a, c}, {b, a, d}, {b, c, a}, {b, c, d}, {b, d, a}, {b, d, c}, {c, a, 
+        b}, {c, a, d}, {c, b, a}, {c, b, d}, {c, d, a}, {c, d, b}, {d, a, 
+        b}, {d, a, c}, {d, b, a}, {d, b, c}, {d, c, a}, {d, c, 
+        b}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*variacii\ so\ povtoruvanje*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\(<< DiscreteMath`Combinatorica`\[IndentingNewLine]
+    Clear[a, k, t, n, l, i, r, j, t1]\[IndentingNewLine]
+    variaciiso[a_, k_] := 
+      Module[{t, n}, n = {}; l = Compositions[k, Length[a]]; 
+        For[r = 1, r \[LessEqual] Length[l], \(r++\), 
+          For[i = 1; t = {}, i \[LessEqual] Length[a], \(i++\), 
+            For[j = 1, j \[LessEqual] l[\([r, i]\)], \(j++\), 
+              t = Append[t, a[\([i]\)]]]; t1 = Permutations[t]]; 
+          n = Union[n, t1]]; n]\[IndentingNewLine]
+    variaciiso[{a, b}, 3]\)\)\)], "Input"],
+
+Cell[BoxData[
+    \({{a, a, a}, {a, a, b}, {a, b, a}, {a, b, b}, {b, a, a}, {b, a, b}, {b, 
+        b, a}, {b, b, b}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*kombinacii\ bez\ povtoruvanje*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\(<< DiscreteMath`Combinatorica`\[IndentingNewLine]
+    Clear[a, k, t]\[IndentingNewLine]
+    kombinaciibez[a_, k_] := 
+      Module[{t}, t = KSubsets[a, k]; t]\[IndentingNewLine]
+    kombinaciibez[{a, b, c, d, e}, 3]\)\)\)], "Input"],
+
+Cell[BoxData[
+    \({{a, b, c}, {a, b, d}, {a, b, e}, {a, c, d}, {a, c, e}, {a, d, e}, {b, 
+        c, d}, {b, c, e}, {b, d, e}, {c, d, e}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*kombinacii\ so\ povtoruvanje*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\(<< DiscreteMath`Combinatorica`\[IndentingNewLine]
+    Clear[a, k, i, r, j, n, t, n1]\[IndentingNewLine]
+    kombinaciiso[a_, k_] := 
+      Module[{t, n, n1}, n = {}; n1 = {}; l = Compositions[k, Length[a]]; 
+        For[r = 1, r \[LessEqual] Length[l], \(r++\), 
+          For[i = 1; t = {}, i \[LessEqual] Length[a], \(i++\), 
+            For[j = 1, j \[LessEqual] l[\([r, i]\)], \(j++\), 
+              t = Append[t, a[\([i]\)]]]; t1 = Permutations[t]]; 
+          n = Union[n, t1]]; 
+        For[i = 1, i \[LessEqual] Length[n], \(i++\), 
+          If[OrderedQ[n[\([i]\)]], n1 = Append[n1, n[\([i]\)]]]]; 
+        n1]\[IndentingNewLine]
+    kombinaciiso[{1, 2}, 3]\)\)\)], "Input"],
+
+Cell[BoxData[
+    \({{1, 1, 1}, {1, 1, 2}, {1, 2, 2}, {2, 2, 2}}\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{77, 1280}, {0, 749}},
+WindowSize->{681, 453},
+WindowMargins->{{0, Automatic}, {Automatic, 0}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 26, 0, 30, "Input"],
+Cell[1783, 53, 238, 4, 70, "Input"],
+
+Cell[CellGroupData[{
+Cell[2046, 61, 274, 5, 110, "Input"],
+Cell[2323, 68, 109, 2, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2469, 75, 570, 10, 190, "Input"],
+Cell[3042, 87, 607, 8, 124, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3686, 100, 471, 9, 150, "Input"],
+Cell[4160, 111, 334, 5, 67, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4531, 121, 646, 11, 210, "Input"],
+Cell[5180, 134, 131, 2, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5348, 141, 343, 6, 130, "Input"],
+Cell[5694, 149, 153, 2, 48, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5884, 156, 794, 14, 250, "Input"],
+Cell[6681, 172, 78, 1, 29, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

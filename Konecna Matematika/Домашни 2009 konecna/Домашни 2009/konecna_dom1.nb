@@ -1,0 +1,285 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      9153,        234]*)
+(*NotebookOutlinePosition[      9799,        256]*)
+(*  CellTagsIndexPosition[      9755,        252]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(\(\( (*Aleksadar\ Tomovski\ 9909*) \)\(\[IndentingNewLine]\)\(\
+\[IndentingNewLine]\)\( (*\[IndentingNewLine]\ \ 1. \ kreiranje\ m - 
+        ca\ na\ sosedstvo\[IndentingNewLine]2. \ kolku\ patista\ so\ dolzina\ \
+X\ postojat\ negju\ teme\ a\ i\ teme\ b\[IndentingNewLine]3. \ Kolku\ vkupno\ \
+patista\ so\ dolzina\ X\ postojat\ vo\ grafot\[IndentingNewLine]4. \ Kolku\ \
+vkupno\ zatvoreni\ patista\ so\ dolzina\ X\ postojat\ od\ temeto\ a\
+\[IndentingNewLine]5. \ Kolku\ vkupno\ zatvoreni\ patista\ so\ dolzina\ X\ vo\
+\ grafot\[IndentingNewLine]*) \)\(\[IndentingNewLine]\)\(\[IndentingNewLine]\)\
+\(\(Clear[brV, \ brG, \ mnzE, \ A, \ B];\)\[IndentingNewLine]
+    \(brV = Input["\<br. na teminjata:\>"];\)\[IndentingNewLine]
+    \(brE = Input["\<br. na rebrata:\>"];\)\[IndentingNewLine]
+    \(mnzE = 
+        Input["\<vniesi gi rebrata (kako mnz. od parovi podmnozestva, so toa \
+sto ako e neorientiran graf da se navede deka ako pr. postoi {a,b} togas da \
+se zapise i {b,a}) pr. zad.1 {{1,2},{1,3},{3,3},{2,1},{3,1}}:\>"];\)\
+\[IndentingNewLine]
+    \(mnzE // MatrixForm;\)\[IndentingNewLine]
+    \(A = Table[0, {i, brV}, {j, brV}];\)\[IndentingNewLine]
+    \(A // 
+        MatrixForm;\)\[IndentingNewLine]\[IndentingNewLine] (*popolnuvanje\ \
+na\ matricata\ na\ sosedstvo*) \[IndentingNewLine]
+    \(For[i = 1, \ 
+        i \[LessEqual] brE, \ \(i++\), \[IndentingNewLine]a = 
+          mnzE[\([i, 1]\)]; \[IndentingNewLine]b = 
+          mnzE[\([i, 2]\)]; \[IndentingNewLine]\(A[\([\ a, 
+              b]\)]++\);\[IndentingNewLine]];\)\[IndentingNewLine]\
+\[IndentingNewLine]
+    \(Clear[a, b, n, B, \ suma];\)\[IndentingNewLine]
+    \(Print["\<1. maricata na sosedstvo A:\>"];\)\[IndentingNewLine]
+    MatrixForm[A]\[IndentingNewLine]\[IndentingNewLine]
+    \(Clear[a, b, n, B, \ suma];\)\[IndentingNewLine]
+    \(Print["\<2. kolku patista so dolzina X postojat negju teme a i teme \
+b:\>"];\)\[IndentingNewLine]
+    \(n = Input["\<dolzina na pat:\>"];\)\[IndentingNewLine]
+    \(a = Input["\<pocetno teme a:\>"];\)\[IndentingNewLine]
+    \(b = Input["\<zavrsno tebe b:\>"];\)\[IndentingNewLine]
+    \(B = MatrixPower[A, n];\)\[IndentingNewLine]
+    B // MatrixForm\[IndentingNewLine]
+    \(Print["\<br. na patista so dolzina \>", n, "\< od temeto \>", 
+        a, "\< do \>", b, "\< e \>", 
+        B[\([a, b]\)]];\)\[IndentingNewLine]\[IndentingNewLine]
+    \(Clear[a, b, n, B, \ suma];\)\[IndentingNewLine]
+    \(Print["\<3. Kolku vkupno patista so dolzina X postojat vo \
+grafot:\>"];\)\[IndentingNewLine]
+    \(n = Input["\<dolzina na pat:\>"];\)\[IndentingNewLine]
+    \(B = MatrixPower[A, n];\)\[IndentingNewLine]
+    B // MatrixForm\[IndentingNewLine]
+    \(suma = 0;\)\[IndentingNewLine]
+    For[i = 1, \ 
+      i \[LessEqual] brV, \ \(i++\), \[IndentingNewLine]For[j = 1, \ 
+        j \[LessEqual] 
+          brV, \ \(j++\), \[IndentingNewLine]\(suma = 
+            suma + B[\([i, 
+                  j]\)];\)\[IndentingNewLine]]\[IndentingNewLine]]\
+\[IndentingNewLine]
+    \(Print["\<br. na patista vo grafot so dolzina \>", n, "\< e \>", 
+        suma];\)\[IndentingNewLine]\[IndentingNewLine]
+    \(Clear[a, b, n, B, \ suma];\)\[IndentingNewLine]
+    Print["\<4. Kolku vkupno zatvoreni patista so dolzina X postojat od \
+temeto a)\>"]\[IndentingNewLine]
+    \(n = Input["\<dolzina na pat:\>"];\)\[IndentingNewLine]
+    \(a = Input["\<od temeto a:\>"];\)\[IndentingNewLine]
+    \(B = MatrixPower[A, n];\)\[IndentingNewLine]
+    B // MatrixForm\[IndentingNewLine]
+    \(Print["\<br. na zatvoreni patista, vo grafot, so dolzina \>", 
+        n, "\< od temeto \>", a, \ "\< e \>", 
+        B[\([a, a]\)]];\)\[IndentingNewLine]\[IndentingNewLine]
+    \(Clear[a, b, n, B, \ suma];\)\[IndentingNewLine]
+    Print["\<5. Kolku vkupno zatvoreni patista so dolzina X vo grafot\>"]\
+\[IndentingNewLine]
+    \(n = Input["\<dolzina na pat:\>"];\)\[IndentingNewLine]
+    \(B = MatrixPower[A, n];\)\[IndentingNewLine]
+    B // MatrixForm\[IndentingNewLine]
+    \(suma = 0;\)\[IndentingNewLine]
+    For[j = 1, \ 
+      j \[LessEqual] 
+        brV, \ \(j++\), \[IndentingNewLine]\(suma = 
+          suma + B[\([j, j]\)];\)\[IndentingNewLine]]\[IndentingNewLine]
+    \(Print["\<br. na zatvoreni patista, vo grafot, so dolzina \>", 
+        n, "\< e \>", suma];\)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \("1. maricata na sosedstvo A:"\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"0", "1", "1"},
+            {"1", "0", "0"},
+            {"1", "0", "1"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"],
+
+Cell[BoxData[
+    \("2. kolku patista so dolzina X postojat negju teme a i teme b:"\)], \
+"Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"2", "0", "1"},
+            {"0", "1", "1"},
+            {"1", "1", "2"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"],
+
+Cell[BoxData[
+    InterpretationBox[\("br. na patista so dolzina "\[InvisibleSpace]2\
+\[InvisibleSpace]" od temeto "\[InvisibleSpace]3\[InvisibleSpace]" do "\
+\[InvisibleSpace]1\[InvisibleSpace]" e "\[InvisibleSpace]1\),
+      SequenceForm[ 
+      "br. na patista so dolzina ", 2, " od temeto ", 3, " do ", 1, " e ", 1],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("3. Kolku vkupno patista so dolzina X postojat vo grafot:"\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"2", "0", "1"},
+            {"0", "1", "1"},
+            {"1", "1", "2"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"],
+
+Cell[BoxData[
+    InterpretationBox[\("br. na patista vo grafot so dolzina "\
+\[InvisibleSpace]2\[InvisibleSpace]" e "\[InvisibleSpace]9\),
+      SequenceForm[ "br. na patista vo grafot so dolzina ", 2, " e ", 9],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("4. Kolku vkupno zatvoreni patista so dolzina X postojat od temeto \
+a)"\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"2", "0", "1"},
+            {"0", "1", "1"},
+            {"1", "1", "2"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"],
+
+Cell[BoxData[
+    InterpretationBox[\("br. na zatvoreni patista, vo grafot, so dolzina "\
+\[InvisibleSpace]2\[InvisibleSpace]" od temeto "\[InvisibleSpace]3\
+\[InvisibleSpace]" e "\[InvisibleSpace]2\),
+      SequenceForm[ 
+      "br. na zatvoreni patista, vo grafot, so dolzina ", 2, " od temeto ", 3,
+         " e ", 2],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("5. Kolku vkupno zatvoreni patista so dolzina X vo grafot"\)], "Print"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"2", "0", "1"},
+            {"0", "1", "1"},
+            {"1", "1", "2"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"],
+
+Cell[BoxData[
+    InterpretationBox[\("br. na zatvoreni patista, vo grafot, so dolzina "\
+\[InvisibleSpace]2\[InvisibleSpace]" e "\[InvisibleSpace]5\),
+      SequenceForm[ 
+      "br. na zatvoreni patista, vo grafot, so dolzina ", 2, " e ", 5],
+      Editable->False]], "Print"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 911}},
+WindowSize->{774, 740},
+WindowMargins->{{197, Automatic}, {Automatic, 12}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 4301, 80, 1470, "Input"],
+Cell[6080, 135, 62, 1, 25, "Print"],
+Cell[6145, 138, 266, 8, 57, "Output"],
+Cell[6414, 148, 98, 2, 25, "Print"],
+Cell[6515, 152, 266, 8, 57, "Output"],
+Cell[6784, 162, 361, 7, 25, "Print"],
+Cell[7148, 171, 91, 1, 25, "Print"],
+Cell[7242, 174, 266, 8, 57, "Output"],
+Cell[7511, 184, 247, 4, 25, "Print"],
+Cell[7761, 190, 105, 2, 25, "Print"],
+Cell[7869, 194, 266, 8, 57, "Output"],
+Cell[8138, 204, 355, 7, 25, "Print"],
+Cell[8496, 213, 91, 1, 25, "Print"],
+Cell[8590, 216, 266, 8, 57, "Output"],
+Cell[8859, 226, 278, 5, 25, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
