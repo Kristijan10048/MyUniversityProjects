@@ -1,0 +1,6 @@
+Група 5: Апликација за креирање на околина со RoboEnv и движење на роботот со RoboL (C++) Максимум поени: 68
+
+http://code.google.com/hosting/
+
+roboenvcompiler
+http://groups.google.com/group/roboenvcompiler
